@@ -4,13 +4,13 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'GMAO-Project-main/**'
+      - 'GMAO/**'
       - '.github/workflows/aegis-pipeline.yml'
   workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
-  # Converts repository name to lowercase for Docker registry compatibility
+
   IMAGE_NAME_FRONTEND: youssefag1337/gmao-frontend
   IMAGE_NAME_BACKEND: youssefag1337/gmao-backend
 
@@ -40,7 +40,7 @@ jobs:
       - name: Build and push Frontend
         uses: docker/build-push-action@v5
         with:
-          context: ./GMAO-Project-main/gmao-frontend
+          context: ./GMAO/gmao-frontend
           push: true
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_FRONTEND }}:${{ github.sha }}
@@ -51,7 +51,7 @@ jobs:
       - name: Build and push Backend
         uses: docker/build-push-action@v5
         with:
-          context: ./GMAO-Project-main/gmao-backend
+          context: ./GMAO/gmao-backend
           push: true
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BACKEND }}:${{ github.sha }}

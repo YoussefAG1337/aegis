@@ -1,0 +1,51 @@
+# Dependencies
+**/node_modules/
+
+# Next.js build output
+**/gmao-frontend/.next/
+**/gmao-frontend/out/
+**/gmao-frontend/build/
+AGENTS.md
+flow.md
+/UI
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Env secrets (CRITICAL: Do not commit secrets to Git)
+**/.env
+**/.env.local
+**/.env.*.local
+
+# IDEs & System files
+.DS_Store
+.vscode/
+.idea/
+*.pem
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+azure_logs
+logs.zip
+progress.md
+learnings.md
+memory.md
+ui-registry.md
+skills
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+terraform/state_migration.ps1
