@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: gmao-backend
-        image: ghcr.io/youssefag1337/gmao-backend:latest
+        image: ghcr.io/youssefag1337/gmao-backend:c19e6d35b26715f0ab08ada204f378449a3a8629
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
