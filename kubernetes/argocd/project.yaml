@@ -4,7 +4,7 @@ metadata:
   name: aegis-project
   namespace: argocd
 spec:
-  description: "Enterprise S3NS Sovereign Platform GitOps Project"
+  description: "Enterprise Sovereign Platform GitOps Project"
   # Allow deployments to any namespace in the local cluster
   destinations:
     - namespace: '*'

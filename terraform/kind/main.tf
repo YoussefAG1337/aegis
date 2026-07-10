@@ -108,7 +108,7 @@ resource "helm_release" "argocd" {
   chart            = "argo-cd"
   namespace        = "argocd"
   create_namespace = true
-  version          = "7.1.1" # Stable enterprise version
+  version          = "7.1.1"
 
   # ArgoCD would use SSO (OIDC/SAML) For this we use the default admin password.
   set {
