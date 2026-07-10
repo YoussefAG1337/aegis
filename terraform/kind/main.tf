@@ -97,6 +97,24 @@ resource "helm_release" "ingress_nginx" {
     name  = "controller.updateStrategy.type"
     value = "RollingUpdate"
   }
+  
+  # Ensure ingress runs on the node where ports are mapped
+  set {
+    name  = "controller.nodeSelector.ingress-ready"
+    value = "true"
+  }
+  set {
+    name  = "controller.tolerations[0].key"
+    value = "node-role.kubernetes.io/control-plane"
+  }
+  set {
+    name  = "controller.tolerations[0].operator"
+    value = "Equal"
+  }
+  set {
+    name  = "controller.tolerations[0].effect"
+    value = "NoSchedule"
+  }
 
   depends_on = [kind_cluster.aegis]
 }
