@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: aegis-project
+  namespace: argocd
+spec:
+  description: "Enterprise S3NS Sovereign Platform GitOps Project"
+  # Allow deployments to any namespace in the local cluster
+  destinations:
+    - namespace: '*'
+      server: https://kubernetes.default.svc
+  # Allow all Git repositories (for portfolio purposes)
+  sourceRepos:
+    - '*'
+  # Allow all resource kinds
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'

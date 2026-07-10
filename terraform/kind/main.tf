@@ -100,3 +100,21 @@ resource "helm_release" "ingress_nginx" {
 
   depends_on = [kind_cluster.aegis]
 }
+
+
+resource "helm_release" "argocd" {
+  name             = "argocd"
+  repository       = "https://argoproj.github.io/argo-helm"
+  chart            = "argo-cd"
+  namespace        = "argocd"
+  create_namespace = true
+  version          = "7.1.1" # Stable enterprise version
+
+  # ArgoCD would use SSO (OIDC/SAML) For this we use the default admin password.
+  set {
+    name  = "server.insecure"
+    value = "true" # Avoids SSL termination issues inside Kind locally
+  }
+
+  depends_on = [kind_cluster.aegis]
+}
