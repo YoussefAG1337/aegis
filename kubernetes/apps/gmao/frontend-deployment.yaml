@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gmao-frontend
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gmao-frontend
+  template:
+    metadata:
+      labels:
+        app: gmao-frontend
+    spec:
+      containers:
+      - name: gmao-frontend
+        image: ghcr.io/youssefag1337/gmao-frontend:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000

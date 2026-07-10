@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gmao-backend
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gmao-backend
+  template:
+    metadata:
+      labels:
+        app: gmao-backend
+    spec:
+      containers:
+      - name: gmao-backend
+        image: ghcr.io/youssefag1337/gmao-backend:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - secretRef:
+            name: gmao-secret
+        env:
+        - name: PORT
+          value: "8080"
+        # We can simulate FRONTEND_URL if needed, though for local we can just use the ingress host
+        - name: FRONTEND_URL
+          value: "http://localhost"
