@@ -13,7 +13,7 @@ spec:
       labels:
         app: gmao-backend
       annotations:
-        rollme: "force-restart-1"
+        rollme: "force-restart-2"
     spec:
       initContainers:
       - name: prisma-migrate
@@ -37,6 +37,8 @@ spec:
         env:
         - name: PORT
           value: "8080"
+        - name: NODE_ENV
+          value: "development"
         # We can simulate FRONTEND_URL if needed, though for local we can just use the ingress host
         - name: FRONTEND_URL
           value: "http://localhost"
