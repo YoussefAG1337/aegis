@@ -4,6 +4,10 @@ terraform {
       source  = "tehcyx/kind"
       version = "~> 0.4.0"
     }
+    helm = {
+      source  = "hashicorp/helm"
+      version = "~> 2.12"
+    }
   }
 }
 
@@ -64,4 +68,35 @@ resource "kind_cluster" "aegis" {
       }
     }
   }
+}
+
+provider "helm" {
+  kubernetes {
+    config_path = kind_cluster.aegis.kubeconfig_path
+  }
+}
+
+resource "helm_release" "ingress_nginx" {
+  name             = "ingress-nginx"
+  repository       = "https://kubernetes.github.io/ingress-nginx"
+  chart            = "ingress-nginx"
+  namespace        = "ingress-nginx"
+  create_namespace = true
+  version          = "4.10.1"
+
+  # Specific settings required for Ingress to work with Kind port mapping
+  set {
+    name  = "controller.hostPort.enabled"
+    value = "true"
+  }
+  set {
+    name  = "controller.service.type"
+    value = "NodePort"
+  }
+  set {
+    name  = "controller.updateStrategy.type"
+    value = "RollingUpdate"
+  }
+
+  depends_on = [kind_cluster.aegis]
 }
