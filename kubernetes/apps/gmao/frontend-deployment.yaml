@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: gmao-frontend
-        image: ghcr.io/youssefag1337/gmao-frontend:a0527cabcd5f09addd3e5ffb337f5f44d4ba413e
+        image: ghcr.io/youssefag1337/gmao-frontend:0a6cc4acb7bf5861c885f0ac932846c863392b21
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000

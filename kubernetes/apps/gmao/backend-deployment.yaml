@@ -15,7 +15,7 @@ spec:
     spec:
       initContainers:
       - name: prisma-migrate
-        image: ghcr.io/youssefag1337/gmao-backend:a0527cabcd5f09addd3e5ffb337f5f44d4ba413e
+        image: ghcr.io/youssefag1337/gmao-backend:0a6cc4acb7bf5861c885f0ac932846c863392b21
         imagePullPolicy: IfNotPresent
         command: ["/bin/sh", "-c"]
         args: 
@@ -25,7 +25,7 @@ spec:
             name: gmao-secret
       containers:
       - name: gmao-backend
-        image: ghcr.io/youssefag1337/gmao-backend:a0527cabcd5f09addd3e5ffb337f5f44d4ba413e
+        image: ghcr.io/youssefag1337/gmao-backend:0a6cc4acb7bf5861c885f0ac932846c863392b21
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
