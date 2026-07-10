@@ -8,6 +8,5 @@ node_modules
 dist/
 
 # Scratch files
+# scratch files
 fix.js
-
-prisma/seed.ts
