@@ -32,6 +32,9 @@ RUN npm ci --only=production
 COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 
+# Copy the prisma folder for migrations and seeding
+COPY --from=builder /app/prisma ./prisma
+
 # Copy the compiled Javascript from the builder stage
 COPY --from=builder /app/dist ./dist
 
